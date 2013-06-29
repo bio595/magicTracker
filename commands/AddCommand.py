@@ -6,7 +6,16 @@ class AddCommand(object):
 		self.argv = argv
 
 	def execute(self):
-		DBHelper().addDeck(self.argv[1], self.argv[2], self.argv[3], self.argv[4])
+		if not len(self.argv) > 1:
+			print "Not enough arguments supplied"
+		else:
+			if self.argv[1] == 'deck':
+				if not len(self.argv) == 6:
+					print "Wrong number of arguments supplied"
+				else:
+					#name, version, colour, creator
+					DBHelper().addDeck(self.argv[2], self.argv[3], self.argv[4], self.argv[5])
+			elif self.argv[1] == 'result':
+				pass
+			
 
-
-		
