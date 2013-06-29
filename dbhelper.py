@@ -18,6 +18,20 @@ class DBHelper(object):
 							losses INTEGER,
 						 PRIMARY KEY (name, version));""")
 
+		cursor.execute(""" CREATE TABLE IF NOT EXISTS games
+			(
+				dateTime DATETIME PRIMARY KEY,
+				winningPlayer TEXT,
+				winningDeckName TEXT,
+				winningDeckVersion INTEGER,
+				winningMulligans INTEGER,
+				losingPlayer TEXT,
+				losingDeckName TEXT,
+				losingDeckVesrion INTEGER,
+				losingMulligans INTEGER
+				
+			);""")
+
 	def __del__(self):
 		self.conn.close()
 		

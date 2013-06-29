@@ -4,6 +4,8 @@ from commands import CommandFactory
 def main():
 
 	if len(argv) == 1:
+		from dbhelper import DBHelper
+		var = DBHelper()
 		with open('description.txt') as f:
 			print f.read()
 	else:
