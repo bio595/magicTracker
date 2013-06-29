@@ -4,10 +4,10 @@ class DBHelper(object):
 	
 	def __init__(self):
 		#open the connections
-		self.conn = sqlite3.connect('magic.db')
+		conn = sqlite3.connect('magic.db')
 
 		#create the tables if they dont exist
-		cursor = self.conn.cursor()
+		cursor = conn.cursor()
 		cursor.execute("""CREATE TABLE IF NOT EXISTS decks
 						(
 							name TEXT,
@@ -31,7 +31,18 @@ class DBHelper(object):
 				losingMulligans INTEGER
 				
 			);""")
+		conn.commit()
+		conn.close()
+	
+	def addDeck(self, name, version, color, creator):
+		#open the connections
+		with sqlite3.connect('magic.db') as conn:
+			cursor = conn.cursor()
+			cursor.execute("""INSERT INTO decks (
+							name, version, color, creator, wins, losses
+							)
+							VALUES (
+							?, ?, ?, ?, 0, 0
+							);""", (name, version, color, creator))
 
-	def __del__(self):
-		self.conn.close()
-		
+			conn.commit()

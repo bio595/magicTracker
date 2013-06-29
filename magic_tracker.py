@@ -1,5 +1,5 @@
 from sys import argv
-from commands import CommandFactory
+from commands import get_command
 
 def main():
 
@@ -10,7 +10,7 @@ def main():
 			print f.read()
 	else:
 		command = argv[1]
-		command = CommandFactory.get_command(argv[1])
+		command = get_command(argv[1:])
 		command.execute()
 
 
