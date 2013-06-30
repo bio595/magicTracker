@@ -13,9 +13,22 @@ class AddCommand(object):
 				if not len(self.argv) == 6:
 					print "Wrong number of arguments supplied"
 				else:
-					#name, version, colour, creator
-					get_DBHelper_instance().addDeck(self.argv[2], self.argv[3], self.argv[4], self.argv[5])
+					get_DBHelper_instance().addDeck(self.argv[2], #name
+													self.argv[3], #version
+													self.argv[4], #colour
+													self.argv[5]) #creator
+			
 			elif self.argv[1] == 'result':
-				pass
+				if not len(self.argv) == 10:
+					print "Wrong number of arguments supplied"
+				else:
+					get_DBHelper_instance().addResult(self.argv[2], #winner name 
+													  self.argv[3], #winner deck
+													  self.argv[4], #winner version
+													  self.argv[5], #winner mulligans
+													  self.argv[6], #loser name
+													  self.argv[7], #loser deck
+													  self.argv[8], #loser version
+													  self.argv[9]) #loser mulligans
 			
 
