@@ -17,9 +17,7 @@ def get_DBHelper_instance():
 								name TEXT,
 								version INTEGER,
 								color TEXT,
-								creator TEXT,
-								wins INTEGER,
-								losses INTEGER,
+								creator TEXT
 							 PRIMARY KEY (name, version));""")
 
 			cursor.execute(""" CREATE TABLE IF NOT EXISTS games
