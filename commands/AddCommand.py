@@ -1,4 +1,4 @@
-from dbhelper import DBHelper
+from dbhelper import get_DBHelper_instance
 
 class AddCommand(object):
 	
@@ -14,7 +14,7 @@ class AddCommand(object):
 					print "Wrong number of arguments supplied"
 				else:
 					#name, version, colour, creator
-					DBHelper().addDeck(self.argv[2], self.argv[3], self.argv[4], self.argv[5])
+					get_DBHelper_instance().addDeck(self.argv[2], self.argv[3], self.argv[4], self.argv[5])
 			elif self.argv[1] == 'result':
 				pass
 			
